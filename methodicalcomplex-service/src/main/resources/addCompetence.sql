@@ -1,0 +1,2 @@
+insert into MC_COMPETENCES_ (ID_COMPLEX_SPECIALITIES, ID_S_COMPETENCE) 
+values (?, ?)
