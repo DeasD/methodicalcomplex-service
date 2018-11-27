@@ -3,10 +3,12 @@ package ru.unisuite.methodicalcomplexservice.webservice;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-
+import javax.xml.ws.BindingType;
+import javax.xml.ws.soap.SOAPBinding;
 import ru.unisuite.methodicalcomplexservice.exception.MethodicalComplexServiceException;
 
 @WebService(name = "MethodicalComplexWebService")
+@BindingType(SOAPBinding.SOAP12HTTP_BINDING)
 public interface IMethodicalComplexWebService {
 
 	@WebMethod(action = "urn:FindAuthors")

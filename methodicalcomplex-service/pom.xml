@@ -16,6 +16,7 @@
 		<java.version>1.8</java.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+		<spring.version>4.1.0.RELEASE</spring.version>
 	</properties>
 
 	<build>
@@ -27,6 +28,36 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-java2ws-plugin</artifactId>
+				<version>${cxf.plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-jaxws</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<className>ru.unisuite.methodicalcomplexservice.webservice.MethodicalComplexWebServiceImpl</className>
+					<argline>-createxsdimports</argline>
+					<soap12>true</soap12>
+					<genWsdl>true</genWsdl>
+					<outputFile>src/main/webapp/WEB-INF/wsdl/MethodicalComplexWebServiceImpl.wsdl</outputFile>
+					<verbose>true</verbose>
+				</configuration>
+				<executions>
+					<execution>
+						<id>generate-wsdl</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>java2ws</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -48,6 +79,12 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 	</dependencies>

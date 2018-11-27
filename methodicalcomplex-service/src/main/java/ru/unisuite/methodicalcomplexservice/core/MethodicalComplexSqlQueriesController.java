@@ -2,6 +2,7 @@ package ru.unisuite.methodicalcomplexservice.core;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.apache.cxf.helpers.IOUtils;
 
 public class MethodicalComplexSqlQueriesController {
@@ -38,8 +39,8 @@ public class MethodicalComplexSqlQueriesController {
 
 	public static String sqlResourceToString(String sqlFileName) {
 		try (InputStream inputStream = MethodicalComplexSqlQueriesController.class.getClassLoader()
-				.getResourceAsStream(sqlFileName)) {
-			return IOUtils.toString(inputStream);
+				.getResourceAsStream(sqlFileName)) {					
+			return IOUtils.toString(inputStream, "UTF-8");
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
