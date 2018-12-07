@@ -165,4 +165,4 @@ where ? = 0
 )
 group by name
          , sem
-         , id_discipline
+		 , id_discipline

@@ -43,4 +43,4 @@ where epc.id_discipline_plan = sp.id_discipline_plan
           or sp.id_dp_main = ?)
       and epc.id_s_competence = sc.id_s_competence
 ) dc
-     on dc.id_s_competence = cc.id_s_competence
+on dc.id_s_competence = cc.id_s_competence

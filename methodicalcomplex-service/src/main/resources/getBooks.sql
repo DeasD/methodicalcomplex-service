@@ -101,4 +101,4 @@ group by r.id_edition
 
 Where res.id_edition = e.id_edition
       and e.idk_edition = ke.idk_edition
-      and res.id_edition = p.id_edition(+)
+and res.id_edition = p.id_edition(+)

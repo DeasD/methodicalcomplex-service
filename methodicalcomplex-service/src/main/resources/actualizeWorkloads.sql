@@ -119,5 +119,4 @@ where elu.idk_lesson = r.idk_lesson_2
 end if;
 
 end loop;
-commit;
 end;

@@ -1,0 +1,178 @@
+<xs:schema xmlns:tns="http://webservice.methodicalcomplexservice.unisuite.ru/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.methodicalcomplexservice.unisuite.ru/">
+  <xs:element name="actualizeWorkloads" type="tns:actualizeWorkloads"/>
+  <xs:element name="actualizeWorkloadsResponse" type="tns:actualizeWorkloadsResponse"/>
+  <xs:element name="addCompetence" type="tns:addCompetence"/>
+  <xs:element name="addCompetenceResponse" type="tns:addCompetenceResponse"/>
+  <xs:element name="changeCompetence" type="tns:changeCompetence"/>
+  <xs:element name="changeCompetenceResponse" type="tns:changeCompetenceResponse"/>
+  <xs:element name="deleteCompetence" type="tns:deleteCompetence"/>
+  <xs:element name="deleteCompetenceResponse" type="tns:deleteCompetenceResponse"/>
+  <xs:element name="findAuthors" type="tns:findAuthors"/>
+  <xs:element name="findAuthorsResponse" type="tns:findAuthorsResponse"/>
+  <xs:element name="findBooks" type="tns:findBooks"/>
+  <xs:element name="findBooksResponse" type="tns:findBooksResponse"/>
+  <xs:element name="getActualCompetences" type="tns:getActualCompetences"/>
+  <xs:element name="getActualCompetencesResponse" type="tns:getActualCompetencesResponse"/>
+  <xs:element name="getActualWorkloads" type="tns:getActualWorkloads"/>
+  <xs:element name="getActualWorkloadsResponse" type="tns:getActualWorkloadsResponse"/>
+  <xs:element name="getCurrentWorkloads" type="tns:getCurrentWorkloads"/>
+  <xs:element name="getCurrentWorkloadsResponse" type="tns:getCurrentWorkloadsResponse"/>
+  <xs:element name="getDisciplines" type="tns:getDisciplines"/>
+  <xs:element name="getDisciplinesResponse" type="tns:getDisciplinesResponse"/>
+  <xs:element name="getEducationalPlan" type="tns:getEducationalPlan"/>
+  <xs:element name="getEducationalPlanResponse" type="tns:getEducationalPlanResponse"/>
+  <xs:element name="getSpecialityCompetences" type="tns:getSpecialityCompetences"/>
+  <xs:element name="getSpecialityCompetencesResponse" type="tns:getSpecialityCompetencesResponse"/>
+  <xs:element name="getXmlStructure" type="tns:getXmlStructure"/>
+  <xs:element name="getXmlStructureResponse" type="tns:getXmlStructureResponse"/>
+  <xs:complexType name="getDisciplines">
+    <xs:sequence>
+      <xs:element name="disciplineTypeIndex" type="xs:int"/>
+      <xs:element name="semesterNum" type="xs:int"/>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDisciplinesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCompetence">
+    <xs:sequence>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+      <xs:element name="specialityCompetenceId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCompetenceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCompetence">
+    <xs:sequence>
+      <xs:element name="methodicalComplexCompetenceId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCompetenceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findAuthors">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fioMask" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findAuthorsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getXmlStructure">
+    <xs:sequence>
+      <xs:element name="methodicalComplexId" type="xs:int"/>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getXmlStructureResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCurrentWorkloads">
+    <xs:sequence>
+      <xs:element name="methodicalComplexId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCurrentWorkloadsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBooks">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookMask" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findBooksResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizeWorkloads">
+    <xs:sequence>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+      <xs:element name="methodicalComplexId" type="xs:int"/>
+      <xs:element name="disciplinePlanId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizeWorkloadsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getActualWorkloads">
+    <xs:sequence>
+      <xs:element name="disciplinePlanId" type="xs:int"/>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getActualWorkloadsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeCompetence">
+    <xs:sequence>
+      <xs:element name="newSpecialityCompetenceId" type="xs:int"/>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+      <xs:element name="methodicalComplexCompetenceId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeCompetenceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getActualCompetences">
+    <xs:sequence>
+      <xs:element name="disciplinePlanId" type="xs:int"/>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getActualCompetencesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSpecialityCompetences">
+    <xs:sequence>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+      <xs:element name="disciplinePlanId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSpecialityCompetencesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEducationalPlan">
+    <xs:sequence>
+      <xs:element name="divisionId" type="xs:int"/>
+      <xs:element name="disciplineSpecialitieId" type="xs:int"/>
+      <xs:element name="complexSpecialitiesId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEducationalPlanResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MethodicalComplexServiceException" type="tns:MethodicalComplexServiceException"/>
+  <xs:complexType name="MethodicalComplexServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -2,7 +2,6 @@ package ru.unisuite.methodicalcomplexservice.core;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.apache.cxf.helpers.IOUtils;
 
 public class MethodicalComplexSqlQueriesController {

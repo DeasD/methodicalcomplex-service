@@ -64,4 +64,4 @@ where elu.id_methodical_complex =
       and kl.idk_lesson = elu.idk_lesson
 ) t2
 on t1.idk_lesson = t2.idk_lesson
-   and t1.sem2 = t2.sem2
+and t1.sem2 = t2.sem2

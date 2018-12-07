@@ -15,52 +15,53 @@ public interface IMethodicalComplexWebService {
 	public String findAuthors(@WebParam(name = "fioMask") String fioMask) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:FindBooks")
-	public String findBooks(@WebParam(name = "bookMask") String bookMask);
+	public String findBooks(@WebParam(name = "bookMask") String bookMask) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:GetDisciplines")
 	public String getDisciplines(@WebParam(name = "disciplineTypeIndex") int disciplineTypeIndex,
 			@WebParam(name = "semesterNum") int semesterNum,
-			@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID);
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId)
+			throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:GetEducationalPlan")
-	public String getEducationalPlan(@WebParam(name = "disciplineID") int disciplineID,
-			@WebParam(name = "disciplineSpecialitieID") int disciplineSpecialitieID,
-			@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID);
+	public String getEducationalPlan(@WebParam(name = "divisionId") int divisionId,
+			@WebParam(name = "disciplineSpecialitieId") int disciplineSpecialitieId,
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:GetCurrentWorkloads")
-	public String getCurrentWorkloads(@WebParam(name = "methodicalComplexID") int methodicalComplexID);
+	public String getCurrentWorkloads(@WebParam(name = "methodicalComplexId") int methodicalComplexId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:GetActualWorkloads")
-	public String getActualWorkloads(@WebParam(name = "disciplinePlanID") int disciplinePlanID,
-			@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID);
+	public String getActualWorkloads(@WebParam(name = "disciplinePlanId") int disciplinePlanId,
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId);
 
 	@WebMethod(action = "urn:GetActualCompetences")
-	public String getActualCompetences(@WebParam(name = "disciplinePlanID") int disciplinePlanID,
-			@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID);
+	public String getActualCompetences(@WebParam(name = "disciplinePlanId") int disciplinePlanId,
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId);
 
 	@WebMethod(action = "urn:GetSpecialityCompetences")
-	public String getSpecialityCompetences(@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID,
-			@WebParam(name = "disciplinePlanID") int disciplinePlanID);
+	public String getSpecialityCompetences(@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId,
+			@WebParam(name = "disciplinePlanId") int disciplinePlanId);
 
 	@WebMethod(action = "urn:GetXmlStructure")
-	public String getXmlStructure(@WebParam(name = "methodicalComplexID") int methodicalComplexID,
-			@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID);
+	public String getXmlStructure(@WebParam(name = "methodicalComplexId") int methodicalComplexId,
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:ActualizeWorkloads")
-	public Boolean actualizeWorkloads(@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID,
-			@WebParam(name = "methodicalComplexID") int methodicalComplexID,
-			@WebParam(name = "disciplinePlanID") int disciplinePlanID);
+	public boolean actualizeWorkloads(@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId,
+			@WebParam(name = "methodicalComplexId") int methodicalComplexId,
+			@WebParam(name = "disciplinePlanId") int disciplinePlanId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:AddCompetence")
-	public Boolean addCompetence(@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID,
-			@WebParam(name = "specialityCompetenceID") int specialityCompetenceID);
+	public boolean addCompetence(@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId,
+			@WebParam(name = "specialityCompetenceId") int specialityCompetenceId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:DeleteCompetence")
-	public Boolean deleteCompetence(@WebParam(name = "methodicalComplexCompetenceID") int methodicalComplexCompetenceID);
+	public boolean deleteCompetence(@WebParam(name = "methodicalComplexCompetenceId") int methodicalComplexCompetenceId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:ChangeCompetence")
-	public Boolean changeCompetence(@WebParam(name = "newSpecialityCompetenceID") int newSpecialityCompetenceID,
-			@WebParam(name = "complexSpecialitiesID") int complexSpecialitiesID,
-			@WebParam(name = "methodicalComplexCompetenceID") int methodicalComplexCompetenceID);
+	public boolean changeCompetence(@WebParam(name = "newSpecialityCompetenceId") int newSpecialityCompetenceId,
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId,
+			@WebParam(name = "methodicalComplexCompetenceId") int methodicalComplexCompetenceId) throws MethodicalComplexServiceException;
 
 }

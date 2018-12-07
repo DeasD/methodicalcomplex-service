@@ -34,13 +34,6 @@
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-java2ws-plugin</artifactId>
 				<version>${cxf.plugin.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-jaxws</artifactId>
-						<version>${cxf.version}</version>
-					</dependency>
-				</dependencies>
 				<configuration>
 					<className>ru.unisuite.methodicalcomplexservice.webservice.MethodicalComplexWebServiceImpl</className>
 					<argline>-createxsdimports</argline>
