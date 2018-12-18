@@ -82,7 +82,8 @@ public class MethodicalComplexServiceCore {
 
 	}
 
-	// используется для передачи in-параметра и порядкового номера его вхождения в запрос
+	// используется для передачи in-параметра и порядкового номера его вхождения в
+	// запрос
 	public void setSQLParam(PreparedStatement ps, Object sqlQueryParam, int[] paramEntries) {
 		if (paramEntries != null) {
 			try {
@@ -223,8 +224,9 @@ public class MethodicalComplexServiceCore {
 							optToStr(rs.getInt("LEC_HOURS")), optToStr(rs.getInt("LAB_HOURS")),
 							optToStr(rs.getInt("PR_HOURS")), optToStr(rs.getInt("KSR_HOURS")),
 							optToStr(rs.getInt("SR_HOURS")), optToStr(rs.getString("CERT")),
-							optToStr(rs.getString("COMPS")), rs.getString("DIS_TYPE"), rs.getString("DIS_KIND"),
-							rs.getString("FGOS"), rs.getInt("ID_EDUCATIONAL_PLAN"), rs.getInt("ID_DISCIPLINE_PLAN")));
+							optToStr(rs.getString("COMPS")), optToStr(rs.getString("DIS_TYPE")),
+							optToStr(rs.getString("DIS_KIND")), optToStr(rs.getString("FGOS")),
+							rs.getInt("ID_EDUCATIONAL_PLAN"), rs.getInt("ID_DISCIPLINE_PLAN")));
 				}
 				methodicalComplex.setEducationalPlans(educationalPlansList);
 				getMarshaller(methodicalComplex).marshal(methodicalComplex, writer);
@@ -249,9 +251,8 @@ public class MethodicalComplexServiceCore {
 				MethodicalComplex methodicalComplex = new MethodicalComplex();
 				List<Workloads> workloadsList = new ArrayList<Workloads>();
 				while (rs.next()) {
-					workloadsList.add(new Workloads(rs.getString("NAME"),
-							rs.getInt("SEMESTER"), optToStr(rs.getInt("HOURS")),
-							optToStr(rs.getInt("I_HOURS")), rs.getInt("IDK_LESSON"),
+					workloadsList.add(new Workloads(optToStr(rs.getString("NAME")), rs.getInt("SEMESTER"),
+							optToStr(rs.getInt("HOURS")), optToStr(rs.getInt("I_HOURS")), rs.getInt("IDK_LESSON"),
 							rs.getInt("ID_EDUCATIONAL_LOAD_UMK"), rs.getInt("ID_METHODICAL_COMPLEX")));
 				}
 				methodicalComplex.setWorkloads(workloadsList);
@@ -265,19 +266,95 @@ public class MethodicalComplexServiceCore {
 		}
 	}
 
-	public String getActualWorkloads(int disciplinePlanId, int complexSpecialitiesId) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getActualWorkloads(int disciplinePlanId, int complexSpecialitiesId)
+			throws MethodicalComplexServiceException {
+		StringWriter writer = new StringWriter();
+		try (Connection connection = getDataSource().getConnection();
+				PreparedStatement ps = connection
+						.prepareStatement(MethodicalComplexSqlQueriesController.GET_ACTUAL_WORKLOADS_SQL)) {
+
+			setSQLParam(ps, disciplinePlanId, new int[] { 1, 2 });
+			setSQLParam(ps, complexSpecialitiesId, new int[] { 3 });
+			try (ResultSet rs = ps.executeQuery()) {
+
+				MethodicalComplex methodicalComplex = new MethodicalComplex();
+				List<ActualWorkloads> actualWorkloadsList = new ArrayList<ActualWorkloads>();
+				while (rs.next()) {
+					actualWorkloadsList.add(new ActualWorkloads(rs.getInt("ID_EDUCATIONAL_LOAD_UMK"),
+							optToStr(rs.getString("NAME")), rs.getInt("SEMESTER"), optToStr(rs.getInt("HOURS")),
+							optToStr(rs.getInt("HOURS_INTERACTIVE")), optToStr(rs.getString("ACTION")),
+							rs.getInt("IDK_LESSON")));
+				}
+				methodicalComplex.setActualWorkloads(actualWorkloadsList);
+				getMarshaller(methodicalComplex).marshal(methodicalComplex, writer);
+				return writer.toString();
+			}
+
+		} catch (SQLException | JAXBException e) {
+			logger.error(e.getMessage(), e);
+			throw new MethodicalComplexServiceException(e.getMessage(), e);
+		}
 	}
 
-	public String getActualCompetences(int disciplinePlanId, int complexSpecialitiesId) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getActualCompetences(int disciplinePlanId, int complexSpecialitiesId)
+			throws MethodicalComplexServiceException {
+		StringWriter writer = new StringWriter();
+		try (Connection connection = getDataSource().getConnection();
+				PreparedStatement ps = connection
+						.prepareStatement(MethodicalComplexSqlQueriesController.GET_ACTUAL_COMPETENCES_SQL)) {
+
+			setSQLParam(ps, complexSpecialitiesId, new int[] { 1 });
+			setSQLParam(ps, disciplinePlanId, new int[] { 2, 3 });
+
+			try (ResultSet rs = ps.executeQuery()) {
+
+				MethodicalComplex methodicalComplex = new MethodicalComplex();
+				List<ActualCompetences> actualComptencesList = new ArrayList<ActualCompetences>();
+				while (rs.next()) {
+					actualComptencesList.add(new ActualCompetences(optToStr(rs.getString("ABBREVIATION")),
+							optToStr(rs.getString("NAME")), optToStr(rs.getString("KNOWLEDGE")),
+							optToStr(rs.getString("ABILITY")), optToStr(rs.getString("SKILL")),
+							optToStr(rs.getString("ACTION")), rs.getInt("ID_S_COMPETENCE"),
+							rs.getInt("ID_MC_COMPETENCES")));
+				}
+				methodicalComplex.setActualCompetences(actualComptencesList);
+				getMarshaller(methodicalComplex).marshal(methodicalComplex, writer);
+				return writer.toString();
+			}
+
+		} catch (SQLException | JAXBException e) {
+			logger.error(e.getMessage(), e);
+			throw new MethodicalComplexServiceException(e.getMessage(), e);
+		}
 	}
 
-	public String getSpecialityCompetences(int complexSpecialitiesId, int disciplinePlanId) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getSpecialityCompetences(int complexSpecialitiesId, int disciplinePlanId)
+			throws MethodicalComplexServiceException {
+		StringWriter writer = new StringWriter();
+		try (Connection connection = getDataSource().getConnection();
+				PreparedStatement ps = connection
+						.prepareStatement(MethodicalComplexSqlQueriesController.GET_SPECIALITY_COMPETENCES_SQL)) {
+
+			setSQLParam(ps, complexSpecialitiesId, new int[] { 1, 2 });
+			setSQLParam(ps, disciplinePlanId, new int[] { 3 });
+
+			try (ResultSet rs = ps.executeQuery()) {
+
+				MethodicalComplex methodicalComplex = new MethodicalComplex();
+				List<SpecialityCompetences> specialityComptencesList = new ArrayList<SpecialityCompetences>();
+				while (rs.next()) {
+					specialityComptencesList.add(new SpecialityCompetences(optToStr(rs.getString("ABBREVIATION")),
+							optToStr(rs.getString("NAME")), rs.getInt("ID_S_COMPETENCE")));
+				}
+				methodicalComplex.setSpecialityCompetences(specialityComptencesList);
+				getMarshaller(methodicalComplex).marshal(methodicalComplex, writer);
+				return writer.toString();
+			}
+
+		} catch (SQLException | JAXBException e) {
+			logger.error(e.getMessage(), e);
+			throw new MethodicalComplexServiceException(e.getMessage(), e);
+		}
 	}
 
 	public String getXmlStructure(int methodicalComplexId, int complexSpecialitiesId)

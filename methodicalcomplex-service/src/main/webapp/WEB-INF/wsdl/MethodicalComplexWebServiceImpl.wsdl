@@ -183,6 +183,8 @@
     </wsdl:input>
       <wsdl:output name="getActualWorkloadsResponse" message="tns:getActualWorkloadsResponse">
     </wsdl:output>
+      <wsdl:fault name="MethodicalComplexServiceException" message="tns:MethodicalComplexServiceException">
+    </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="changeCompetence">
       <wsdl:input name="changeCompetence" message="tns:changeCompetence">
@@ -197,12 +199,16 @@
     </wsdl:input>
       <wsdl:output name="getActualCompetencesResponse" message="tns:getActualCompetencesResponse">
     </wsdl:output>
+      <wsdl:fault name="MethodicalComplexServiceException" message="tns:MethodicalComplexServiceException">
+    </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getSpecialityCompetences">
       <wsdl:input name="getSpecialityCompetences" message="tns:getSpecialityCompetences">
     </wsdl:input>
       <wsdl:output name="getSpecialityCompetencesResponse" message="tns:getSpecialityCompetencesResponse">
     </wsdl:output>
+      <wsdl:fault name="MethodicalComplexServiceException" message="tns:MethodicalComplexServiceException">
+    </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getEducationalPlan">
       <wsdl:input name="getEducationalPlan" message="tns:getEducationalPlan">
@@ -319,6 +325,9 @@
       <wsdl:output name="getActualWorkloadsResponse">
         <soap12:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="MethodicalComplexServiceException">
+        <soap12:fault name="MethodicalComplexServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="changeCompetence">
       <soap12:operation soapAction="urn:ChangeCompetence" style="document"/>
@@ -340,6 +349,9 @@
       <wsdl:output name="getActualCompetencesResponse">
         <soap12:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="MethodicalComplexServiceException">
+        <soap12:fault name="MethodicalComplexServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getSpecialityCompetences">
       <soap12:operation soapAction="urn:GetSpecialityCompetences" style="document"/>
@@ -349,6 +361,9 @@
       <wsdl:output name="getSpecialityCompetencesResponse">
         <soap12:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="MethodicalComplexServiceException">
+        <soap12:fault name="MethodicalComplexServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getEducationalPlan">
       <soap12:operation soapAction="urn:GetEducationalPlan" style="document"/>

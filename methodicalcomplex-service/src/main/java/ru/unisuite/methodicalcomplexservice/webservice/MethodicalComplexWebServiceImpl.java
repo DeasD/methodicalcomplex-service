@@ -37,17 +37,17 @@ public class MethodicalComplexWebServiceImpl implements IMethodicalComplexWebSer
 	}
 
 	@Override
-	public String getActualWorkloads(int disciplinePlanId, int complexSpecialitiesId) {
+	public String getActualWorkloads(int disciplinePlanId, int complexSpecialitiesId) throws MethodicalComplexServiceException {
 		return new MethodicalComplexServiceCore().getActualWorkloads(disciplinePlanId, complexSpecialitiesId);
 	}
 
 	@Override
-	public String getActualCompetences(int disciplinePlanId, int complexSpecialitiesId) {
+	public String getActualCompetences(int disciplinePlanId, int complexSpecialitiesId) throws MethodicalComplexServiceException {
 		return new MethodicalComplexServiceCore().getActualCompetences(disciplinePlanId, complexSpecialitiesId);
 	}
 
 	@Override
-	public String getSpecialityCompetences(int complexSpecialitiesId, int disciplinePlanId) {
+	public String getSpecialityCompetences(int complexSpecialitiesId, int disciplinePlanId) throws MethodicalComplexServiceException {
 		return new MethodicalComplexServiceCore().getSpecialityCompetences(complexSpecialitiesId, disciplinePlanId);
 	}
 

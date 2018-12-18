@@ -33,15 +33,15 @@ public interface IMethodicalComplexWebService {
 
 	@WebMethod(action = "urn:GetActualWorkloads")
 	public String getActualWorkloads(@WebParam(name = "disciplinePlanId") int disciplinePlanId,
-			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId);
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:GetActualCompetences")
 	public String getActualCompetences(@WebParam(name = "disciplinePlanId") int disciplinePlanId,
-			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId);
+			@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:GetSpecialityCompetences")
 	public String getSpecialityCompetences(@WebParam(name = "complexSpecialitiesId") int complexSpecialitiesId,
-			@WebParam(name = "disciplinePlanId") int disciplinePlanId);
+			@WebParam(name = "disciplinePlanId") int disciplinePlanId) throws MethodicalComplexServiceException;
 
 	@WebMethod(action = "urn:GetXmlStructure")
 	public String getXmlStructure(@WebParam(name = "methodicalComplexId") int methodicalComplexId,
