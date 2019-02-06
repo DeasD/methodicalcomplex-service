@@ -16,7 +16,9 @@
 		<java.version>1.8</java.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
-		<spring.version>4.1.0.RELEASE</spring.version>
+		<spring.web.version>4.1.0.RELEASE</spring.web.version>
+		<spring.jdbc.version>5.0.8.RELEASE</spring.jdbc.version>
+		<commons.version>1.11</commons.version>
 	</properties>
 
 	<build>
@@ -35,11 +37,11 @@
 				<artifactId>cxf-java2ws-plugin</artifactId>
 				<version>${cxf.plugin.version}</version>
 				<configuration>
-					<className>ru.unisuite.methodicalcomplexservice.webservice.MethodicalComplexWebServiceImpl</className>
+					<className>ru.unisuite.methodicalcomplexservice.webservice.McWebServiceImpl</className>
 					<argline>-createxsdimports</argline>
 					<soap12>true</soap12>
 					<genWsdl>true</genWsdl>
-					<outputFile>src/main/webapp/WEB-INF/wsdl/MethodicalComplexWebServiceImpl.wsdl</outputFile>
+					<outputFile>src/main/webapp/WEB-INF/wsdl/McWebServiceImpl.wsdl</outputFile>
 					<verbose>true</verbose>
 				</configuration>
 				<executions>
@@ -77,7 +79,13 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring.web.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.jdbc.version}</version>
 		</dependency>
 
 	</dependencies>

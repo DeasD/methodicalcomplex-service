@@ -11,9 +11,9 @@
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<jaxws:endpoint id="MethodicalComplexWebService"
-		implementor="ru.unisuite.methodicalcomplexservice.webservice.MethodicalComplexWebServiceImpl"
+		implementor="ru.unisuite.methodicalcomplexservice.webservice.McWebServiceImpl"
 		address="/MethodicalComplexWebService"
-		wsdlLocation="WEB-INF/wsdl/MethodicalComplexWebServiceImpl.wsdl">
+		wsdlLocation="WEB-INF/wsdl/McWebServiceImpl.wsdl">
 	</jaxws:endpoint>
 
 </beans>

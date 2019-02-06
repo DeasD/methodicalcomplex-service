@@ -22,7 +22,7 @@ from educational_load_umk_ elu2
 where elu2.id_methodical_complex = cs.id_methodical_complex
 ) sem
        , t.sem sem_2
-       , mcc.id_s_competence --добавлено 28.10.2015 на примере 6327, иначе не влезало в текст!
+       , mcc.id_s_competence /*добавлено 28.10.2015 на примере 6327, иначе не влезало в текст!*/
        , to_char(substr(sys_xmlagg(xmlelement(id,mcc.knowledge)).extract('/ROWSET/ID/text()').getclobval(), 1, 2000)) knowledge
        , to_char(substr(sys_xmlagg(xmlelement(id,mcc.ability)).extract('/ROWSET/ID/text()').getclobval(), 1, 2000)) ability
        , to_char(substr(sys_xmlagg(xmlelement(id,mcc.skill)).extract('/ROWSET/ID/text()').getclobval(), 1, 2000)) skill
@@ -52,7 +52,7 @@ where mc.id_methodical_complex = cs.id_methodical_complex
       and t.id_complex_specialities != cs.id_complex_specialities
       and cs.id_d_specialitie = t.id_d_specialitie
       and mc.idk_umk = 1000
--- Берем только дисциплины из прикрепленных планов */
+ /*Берем только дисциплины из прикрепленных планов*/
       and (cs.id_complex_specialities in
 (
 select e2.id_complex_specialities
@@ -72,7 +72,7 @@ group by d.name
          , t.sem
          , d.id_discipline
          , cs.id_methodical_complex
-         , mcc.id_s_competence --добавлено 28.10.2015 на примере 6327
+         , mcc.id_s_competence /*добавлено 28.10.2015 на примере 6327*/
 )
 where (sem < sem_2 and ? = 1)
       or (sem > sem_2 and ? = 2)
@@ -147,7 +147,6 @@ where e.id_complex_specialities = 296524
 )
 */
 )
------------------------------------------------------------------
 where (sem < sem_2 and ? = 1)
       or (sem > sem_2 and ? = 2)
       
